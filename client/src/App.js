@@ -1,16 +1,30 @@
 import React from 'react';
-import './App.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-      </header>
-    </div>
-  );
-}
+import ProductList from './pages/ProductList'
+import Checkout from './pages/Checkout'
+import Success from './pages/Success'
+
+const App = () => (
+  <>
+    <Helmet>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+    </Helmet>
+    <Router>
+        <Switch>
+          <Route exact path="/">
+            <ProductList />
+          </Route>
+          <Route path="/checkout">
+            <Checkout />
+          </Route>
+          <Route path="/success">
+            <Success />
+          </Route>
+        </Switch>
+    </Router>
+  </>
+);
 
 export default App;
