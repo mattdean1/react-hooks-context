@@ -22,6 +22,7 @@ module.exports = {
     "react/prop-types": 0,
     "import/extensions": 0,
     "jest/lowercase-name": 0,
-    "jest/prefer-expect-assertions": 0
+    "jest/prefer-expect-assertions": 0,
+    "import/prefer-default-export": 0
   },
 }
