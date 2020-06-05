@@ -28,7 +28,6 @@ class ProductList extends Component {
               name={p.name}
               description={p.description}
               price={p.price}
-              image={p.image}
             />
           ))}
       </Layout>

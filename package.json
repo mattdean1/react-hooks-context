@@ -8,6 +8,7 @@
     "dev": "concurrently --kill-others-on-fail \"$npm_execpath run server\" \"$npm_execpath run client\""
   },
   "devDependencies": {
+    "@storybook/preset-create-react-app": "^3.0.0",
     "concurrently": "^4.0.1"
   }
 }
