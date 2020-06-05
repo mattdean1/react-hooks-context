@@ -6,6 +6,16 @@ import Layout from '../components/Layout'
 import Title from '../components/Title'
 import Product from '../components/Product'
 
+const List = styled.div`
+  & > div {
+    margin-bottom: 20px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+`
+
 class ProductList extends Component {
   constructor(props) {
     super(props)
@@ -22,14 +32,16 @@ class ProductList extends Component {
     return (
       <Layout>
         <Title title="Product Listing" />
-        {products &&
-          products.map((p) => (
-            <Product
-              name={p.name}
-              description={p.description}
-              price={p.price}
-            />
-          ))}
+        <List>
+          {products &&
+            products.map((p) => (
+              <Product
+                name={p.name}
+                description={p.description}
+                price={p.price}
+              />
+            ))}
+        </List>
       </Layout>
     )
   }
