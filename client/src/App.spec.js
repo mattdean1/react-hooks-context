@@ -1,6 +1,6 @@
 import React from 'react'
 import nock from 'nock'
-import { render, waitFor } from '@testing-library/react'
+import { render, waitFor, screen } from '@testing-library/react'
 
 import App from './App'
 
@@ -11,9 +11,11 @@ describe('App', () => {
       .get('/products')
       .reply(200, [])
 
-    const { getByText, getByTestId } = render(<App />)
+    render(<App />)
 
-    expect(getByTestId('loading-spinner')).not.toBeNull()
-    await waitFor(() => expect(getByText('Product Listing')).not.toBeNull())
+    expect(screen.getByTestId('loading-spinner')).not.toBeNull()
+    await waitFor(() =>
+      expect(screen.getByText('Product Listing')).not.toBeNull()
+    )
   })
 })
