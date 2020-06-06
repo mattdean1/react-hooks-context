@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
+import { StylesProvider } from '@material-ui/core/styles'
 
 import ContextProvider from './components/ContextProvider'
 import ProductList from './pages/ProductList'
@@ -16,21 +17,23 @@ const App = () => {
           href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
         />
       </Helmet>
-      <ContextProvider>
-        <Router>
-          <Switch>
-            <Route exact path="/">
-              <ProductList />
-            </Route>
-            <Route path="/checkout">
-              <Checkout />
-            </Route>
-            <Route path="/success">
-              <Success />
-            </Route>
-          </Switch>
-        </Router>
-      </ContextProvider>
+      <StylesProvider injectFirst>
+        <ContextProvider>
+          <Router>
+            <Switch>
+              <Route exact path="/">
+                <ProductList />
+              </Route>
+              <Route path="/checkout">
+                <Checkout />
+              </Route>
+              <Route path="/success">
+                <Success />
+              </Route>
+            </Switch>
+          </Router>
+        </ContextProvider>
+      </StylesProvider>
     </>
   )
 }
