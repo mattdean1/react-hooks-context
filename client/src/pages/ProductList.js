@@ -1,10 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
-import { fetchProducts } from '../services/fetch'
+import { useFetch } from '../services/useFetch'
 import Layout from '../components/Layout'
 import Title from '../components/Title'
 import Product from '../components/Product'
+import Loading from '../components/Loading'
 
 const List = styled.div`
   margin-top: 50px;
@@ -18,36 +19,29 @@ const List = styled.div`
   }
 `
 
-class ProductList extends Component {
-  constructor(props) {
-    super(props)
-    this.state = { products: [] }
-  }
+const ProductList = () => {
+  const [data, loading] = useFetch('/products')
 
-  async componentDidMount() {
-    const products = await fetchProducts()
-    this.setState({ products })
-  }
+  if (loading) return <Loading />
+  const { products } = data
 
-  render() {
-    const { products } = this.state
-    return (
-      <Layout>
-        <Title title="Product Listing" />
-        <List>
-          {products &&
-            products.map((p) => (
-              <Product
-                name={p.name}
-                description={p.description}
-                price={p.price}
-                image={p.image}
-              />
-            ))}
-        </List>
-      </Layout>
-    )
-  }
+  return (
+    <Layout>
+      <Title title="Product Listing" />
+      <List>
+        {products &&
+          products.map((p) => (
+            <Product
+              key={p.name}
+              name={p.name}
+              description={p.description}
+              price={p.price}
+              image={p.image}
+            />
+          ))}
+      </List>
+    </Layout>
+  )
 }
 
 export default ProductList
