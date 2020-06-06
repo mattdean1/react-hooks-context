@@ -20,10 +20,13 @@ module.exports = {
     ],
     "react/jsx-filename-extension": 0,
     "react/prop-types": 0,
-    "import/extensions": 0,
+    "react/jsx-one-expression-per-line": 0,
+    "react/button-has-type": 0,
+    "jsx-a11y/control-has-associated-label": 0,
     "jest/lowercase-name": 0,
     "jest/prefer-expect-assertions": 0,
+    "jest/prefer-strict-equal": 0,
+    "import/extensions": 0,
     "import/prefer-default-export": 0,
-    "react/jsx-one-expression-per-line": 0
   },
 }
