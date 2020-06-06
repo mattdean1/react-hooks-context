@@ -12,4 +12,18 @@ describe('Product', () => {
     expect(getByText('description')).not.toBeNull()
     expect(getByText('£11.99')).not.toBeNull()
   })
+  it('renders placeholder image', () => {
+    const { getByAltText } = render(
+      <Product
+        name="name"
+        description="description"
+        price="11.99"
+        image="image-src"
+      />
+    )
+    expect(getByAltText('Image of the product')).toHaveAttribute(
+      'src',
+      'image-src'
+    )
+  })
 })

@@ -7,6 +7,8 @@ import Title from '../components/Title'
 import Product from '../components/Product'
 
 const List = styled.div`
+  margin-top: 50px;
+
   & > div {
     margin-bottom: 20px;
 
@@ -39,6 +41,7 @@ class ProductList extends Component {
                 name={p.name}
                 description={p.description}
                 price={p.price}
+                image={p.image}
               />
             ))}
         </List>
