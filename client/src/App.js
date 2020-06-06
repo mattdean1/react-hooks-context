@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import { StylesProvider } from '@material-ui/core/styles'
 
-import ContextProvider from './components/ContextProvider'
+import { ProductProvider } from './store/productContext'
 import ProductList from './pages/ProductList'
 import Checkout from './pages/Checkout'
 import Success from './pages/Success'
@@ -18,21 +18,21 @@ const App = () => {
         />
       </Helmet>
       <StylesProvider injectFirst>
-        <ContextProvider>
-          <Router>
-            <Switch>
-              <Route exact path="/">
+        <Router>
+          <Switch>
+            <Route exact path="/">
+              <ProductProvider>
                 <ProductList />
-              </Route>
-              <Route path="/checkout">
-                <Checkout />
-              </Route>
-              <Route path="/success">
-                <Success />
-              </Route>
-            </Switch>
-          </Router>
-        </ContextProvider>
+              </ProductProvider>
+            </Route>
+            <Route path="/checkout">
+              <Checkout />
+            </Route>
+            <Route path="/success">
+              <Success />
+            </Route>
+          </Switch>
+        </Router>
       </StylesProvider>
     </>
   )

@@ -43,6 +43,14 @@ const ButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 20px;
+
+  & > button {
+    margin-bottom: 5px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 `
 
 const Product = ({ name, description, price, image }) => (
@@ -57,8 +65,8 @@ const Product = ({ name, description, price, image }) => (
     <RightContainer>
       <Typography variant="h5">£{price}</Typography>
       <ButtonContainer>
-        <Button>Add</Button>
-        <Button>Remove</Button>
+        <Button variant="contained">Add</Button>
+        <Button variant="contained">Remove</Button>
       </ButtonContainer>
     </RightContainer>
   </Container>

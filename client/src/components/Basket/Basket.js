@@ -29,7 +29,9 @@ const Basket = ({ total, items }) => (
       <Typography variant="h4">£{total}</Typography>
       <Typography>{items} items</Typography>
     </TextContainer>
-    <Button variant="contained">Checkout</Button>
+    <Button variant="contained" color="primary">
+      Checkout
+    </Button>
   </Container>
 )
 

@@ -9,7 +9,7 @@ describe('App', () => {
     nock('http://localhost:5000/api')
       .defaultReplyHeaders({ 'access-control-allow-origin': '*' })
       .get('/products')
-      .reply(200, [])
+      .reply(200, { products: [] })
 
     render(<App />)
 
