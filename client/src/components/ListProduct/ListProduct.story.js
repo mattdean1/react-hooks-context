@@ -1,11 +1,11 @@
 import React from 'react'
 
-import Product from './Product'
+import ListProduct from './ListProduct'
 
-export default { title: 'Product' }
+export default { title: 'ListProduct' }
 
-export const product = () => (
-  <Product
+export const listProduct = () => (
+  <ListProduct
     name="Teapot"
     description="I'm a little teapot"
     price={11.99}

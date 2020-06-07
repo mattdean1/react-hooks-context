@@ -7,7 +7,7 @@ import { getNumItems, getTotalPrice } from '../store/selectors'
 
 import Layout from '../components/Layout'
 import Title from '../components/Title'
-import Product from '../components/Product'
+import ListProduct from '../components/ListProduct'
 import Loading from '../components/Loading'
 import Basket from '../components/Basket'
 
@@ -56,7 +56,7 @@ const ProductList = () => {
           <List>
             {products &&
               products.map((p) => (
-                <Product
+                <ListProduct
                   key={p.id}
                   id={p.id}
                   name={p.name}

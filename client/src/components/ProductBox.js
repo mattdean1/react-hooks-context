@@ -1,9 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import Typography from '@material-ui/core/Typography'
-
-import ProductInfo from '../ProductInfo'
-import ProductActions from '../ProductActions'
 
 const Container = styled.div`
   display: flex;
@@ -32,18 +28,13 @@ const RightContainer = styled.div`
   flex-grow: 1;
 `
 
-const Product = ({ id, name, description, price, image }) => {
+const ProductBox = ({ leftContent, rightContent }) => {
   return (
     <Container>
-      <LeftContainer>
-        <ProductInfo name={name} description={description} image={image} />
-      </LeftContainer>
-      <RightContainer>
-        <Typography variant="h5">£{price}</Typography>
-        <ProductActions id={id} />
-      </RightContainer>
+      <LeftContainer>{leftContent}</LeftContainer>
+      <RightContainer>{rightContent}</RightContainer>
     </Container>
   )
 }
 
-export default Product
+export default ProductBox
