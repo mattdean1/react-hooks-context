@@ -5,10 +5,10 @@ import ListProduct from './ListProduct'
 
 describe('ListProduct', () => {
   it('displays the provided data', () => {
-    render(<ListProduct name="name" description="description" price="11.99" />)
+    render(<ListProduct name="name" description="description" price="1.00" />)
     expect(screen.getByText('name')).not.toBeNull()
     expect(screen.getByText('description')).not.toBeNull()
-    expect(screen.getByText('£11.99')).not.toBeNull()
+    expect(screen.getByText('£1.00')).not.toBeNull()
   })
   it('renders placeholder image', () => {
     render(

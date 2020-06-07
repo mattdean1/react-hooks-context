@@ -4,11 +4,14 @@ import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import { Link } from 'react-router-dom'
 
-import Layout from '../components/Layout'
-import Title from '../components/Title'
 import { useBasketState } from '../store/basketContext'
 import { useProductContext } from '../store/productContext'
-import { getTotalPrice } from '../store/selectors'
+import { getTotalPrice, getValidBasketItems } from '../store/selectors'
+
+import Layout from '../components/Layout'
+import Title from '../components/Title'
+import CheckoutProduct from '../components/CheckoutProduct'
+import List from '../components/List'
 
 const Container = styled.div`
   display: flex;
@@ -31,12 +34,30 @@ const Buttons = styled.div`
 const Checkout = () => {
   const basket = useBasketState()
   const { productsMap } = useProductContext()
+
   const total = getTotalPrice(basket, productsMap)
+  const validProducts = getValidBasketItems(basket, productsMap)
+  const isBasketEmpty = validProducts.length <= 0
 
   return (
     <Layout>
       <Title title="Checkout" />
       <Container>
+        <List>
+          {isBasketEmpty ? (
+            <Typography>Add some items to your basket!</Typography>
+          ) : (
+            validProducts.map((p) => (
+              <CheckoutProduct
+                key={p.id}
+                name={p.name}
+                price={p.price}
+                items={p.freq}
+                image={p.image}
+              />
+            ))
+          )}
+        </List>
         <Total>
           <Typography variant="h5">Total to pay: £{total}</Typography>
         </Total>
@@ -44,7 +65,7 @@ const Checkout = () => {
           <Button variant="contained" component={Link} to="/">
             Continue shopping
           </Button>
-          <Button variant="contained" color="primary">
+          <Button variant="contained" color="primary" disabled={isBasketEmpty}>
             Confirm
           </Button>
         </Buttons>

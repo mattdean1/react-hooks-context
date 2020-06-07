@@ -10,6 +10,7 @@ import Title from '../components/Title'
 import ListProduct from '../components/ListProduct'
 import Loading from '../components/Loading'
 import Basket from '../components/Basket'
+import List from '../components/List'
 
 const Container = styled.div`
   display: flex;
@@ -25,18 +26,6 @@ const LeftColumn = styled.div`
 `
 const RightColumn = styled.div`
   padding-top: 20px;
-`
-
-const List = styled.div`
-  margin-top: 50px;
-
-  & > div {
-    margin-bottom: 20px;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
 `
 
 const ProductList = () => {
