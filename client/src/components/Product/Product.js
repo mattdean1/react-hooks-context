@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 
+import { useBasket, isProductRemovable } from '../../store/basketContext'
+
 const Container = styled.div`
   display: flex;
   flex-direction: row;
@@ -53,23 +55,39 @@ const ButtonContainer = styled.div`
   }
 `
 
-const Product = ({ name, description, price, image }) => (
-  <Container>
-    <LeftContainer>
-      <Image src={image} alt="Image of the product" />
-      <TextContainer>
-        <Typography variant="h5">{name}</Typography>
-        <Typography>{description}</Typography>
-      </TextContainer>
-    </LeftContainer>
-    <RightContainer>
-      <Typography variant="h5">£{price}</Typography>
-      <ButtonContainer>
-        <Button variant="contained">Add</Button>
-        <Button variant="contained">Remove</Button>
-      </ButtonContainer>
-    </RightContainer>
-  </Container>
-)
+const Product = ({ id, name, description, price, image }) => {
+  const [state, dispatch] = useBasket()
+  const addToBasket = () => dispatch({ type: 'add', payload: { id } })
+  const removable = isProductRemovable(state, id)
+  const removeFromBasket = () =>
+    removable && dispatch({ type: 'remove', payload: { id } })
+
+  return (
+    <Container>
+      <LeftContainer>
+        <Image src={image} alt="Image of the product" />
+        <TextContainer>
+          <Typography variant="h5">{name}</Typography>
+          <Typography>{description}</Typography>
+        </TextContainer>
+      </LeftContainer>
+      <RightContainer>
+        <Typography variant="h5">£{price}</Typography>
+        <ButtonContainer>
+          <Button variant="contained" onClick={addToBasket}>
+            Add
+          </Button>
+          <Button
+            variant="contained"
+            onClick={removeFromBasket}
+            disabled={!removable}
+          >
+            Remove
+          </Button>
+        </ButtonContainer>
+      </RightContainer>
+    </Container>
+  )
+}
 
 export default Product

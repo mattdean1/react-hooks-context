@@ -7,6 +7,7 @@ import { ProductProvider } from './store/productContext'
 import ProductList from './pages/ProductList'
 import Checkout from './pages/Checkout'
 import Success from './pages/Success'
+import { BasketProvider } from './store/basketContext'
 
 const App = () => {
   return (
@@ -22,7 +23,9 @@ const App = () => {
           <Switch>
             <Route exact path="/">
               <ProductProvider>
-                <ProductList />
+                <BasketProvider>
+                  <ProductList />
+                </BasketProvider>
               </ProductProvider>
             </Route>
             <Route path="/checkout">

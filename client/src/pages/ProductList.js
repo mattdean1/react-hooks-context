@@ -50,7 +50,8 @@ const ProductList = () => {
             {products &&
               products.map((p) => (
                 <Product
-                  key={p.name}
+                  key={p.id}
+                  id={p.id}
                   name={p.name}
                   description={p.description}
                   price={p.price}
@@ -60,7 +61,7 @@ const ProductList = () => {
           </List>
         </LeftColumn>
         <RightColumn>
-          <Basket total={11.11} items={2} />
+          <Basket />
         </RightColumn>
       </Container>
     </Layout>
