@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button'
 
 import { useBasket } from '../../store/basketContext'
 import { isProductRemovable } from '../../store/selectors'
+import ProductInfo from '../ProductInfo'
 
 const Container = styled.div`
   display: flex;
@@ -33,15 +34,6 @@ const RightContainer = styled.div`
   flex-grow: 1;
 `
 
-const Image = styled.img`
-  height: 60px;
-  width: 60px;
-`
-const TextContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-left: 20px;
-`
 const ButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -66,11 +58,7 @@ const Product = ({ id, name, description, price, image }) => {
   return (
     <Container>
       <LeftContainer>
-        <Image src={image} alt="Image of the product" />
-        <TextContainer>
-          <Typography variant="h5">{name}</Typography>
-          <Typography>{description}</Typography>
-        </TextContainer>
+        <ProductInfo name={name} description={description} image={image} />
       </LeftContainer>
       <RightContainer>
         <Typography variant="h5">£{price}</Typography>
