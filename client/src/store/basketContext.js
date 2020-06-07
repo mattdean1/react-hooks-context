@@ -4,16 +4,19 @@ const BasketStateContext = createContext({})
 const BasketDispatchContext = createContext({})
 
 function basketReducer(state, action) {
-  const productId = action.payload.id
-
   switch (action.type) {
     case 'add': {
+      const productId = action.payload.id
       const previousValue = state[productId] || 0
       return { ...state, [productId]: previousValue + 1 }
     }
     case 'remove': {
+      const productId = action.payload.id
       const previousValue = state[productId] || 1
       return { ...state, [productId]: previousValue - 1 }
+    }
+    case 'clear': {
+      return {}
     }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`)

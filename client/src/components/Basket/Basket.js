@@ -36,6 +36,7 @@ const Basket = ({ total, items }) => {
         component={Link}
         variant="contained"
         color="primary"
+        disabled={items < 1}
       >
         Checkout
       </Button>

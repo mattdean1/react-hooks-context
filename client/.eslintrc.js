@@ -28,6 +28,7 @@ module.exports = {
     "jest/prefer-strict-equal": 0,
     "import/extensions": 0,
     "import/prefer-default-export": 0,
-    "react/jsx-wrap-multilines": ["error", {"declaration": false, "assignment": false}]
+    "react/jsx-wrap-multilines": ["error", {"declaration": false, "assignment": false}],
+    "no-restricted-syntax": 0
   },
 }
