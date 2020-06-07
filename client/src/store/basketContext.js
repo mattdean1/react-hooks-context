@@ -3,8 +3,6 @@ import React, { useContext, createContext } from 'react'
 const BasketStateContext = createContext({})
 const BasketDispatchContext = createContext({})
 
-export const isProductRemovable = (state, id) => state[id] > 0
-
 function basketReducer(state, action) {
   const productId = action.payload.id
 

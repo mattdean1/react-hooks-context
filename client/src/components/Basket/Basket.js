@@ -2,9 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Typography from '@material-ui/core/Typography'
 import MuiButton from '@material-ui/core/Button'
-
-import { useBasketState } from '../../store/basketContext'
-import { useProductContext } from '../../store/productContext'
+import { Link } from 'react-router-dom'
 
 const Container = styled.div`
   display: flex;
@@ -25,31 +23,20 @@ const Button = styled(MuiButton)`
   margin-top: 20px;
 `
 
-const getTotalPrice = (basket, productsMap) =>
-  Object.entries(basket).reduce((acc, curr) => {
-    const [productId, freq] = curr
-    return acc + productsMap[productId].price * freq
-  }, 0)
-
-const getNumItems = (basket) =>
-  Object.values(basket).reduce((acc, curr) => {
-    return acc + curr
-  }, 0)
-
-const Basket = () => {
-  const basket = useBasketState()
-  const { productsMap } = useProductContext()
-  const totalPrice = getTotalPrice(basket, productsMap)
-  const items = getNumItems(basket)
-
+const Basket = ({ total, items }) => {
   return (
     <Container>
       <Typography variant="h5">Your basket</Typography>
       <TextContainer>
-        <Typography variant="h4">£{totalPrice}</Typography>
+        <Typography variant="h4">£{total}</Typography>
         <Typography>{items} items</Typography>
       </TextContainer>
-      <Button variant="contained" color="primary">
+      <Button
+        to="/checkout"
+        component={Link}
+        variant="contained"
+        color="primary"
+      >
         Checkout
       </Button>
     </Container>

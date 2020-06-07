@@ -19,23 +19,23 @@ const App = () => {
         />
       </Helmet>
       <StylesProvider injectFirst>
-        <Router>
-          <Switch>
-            <Route exact path="/">
-              <ProductProvider>
-                <BasketProvider>
+        <ProductProvider>
+          <BasketProvider>
+            <Router>
+              <Switch>
+                <Route exact path="/">
                   <ProductList />
-                </BasketProvider>
-              </ProductProvider>
-            </Route>
-            <Route path="/checkout">
-              <Checkout />
-            </Route>
-            <Route path="/success">
-              <Success />
-            </Route>
-          </Switch>
-        </Router>
+                </Route>
+                <Route path="/checkout">
+                  <Checkout />
+                </Route>
+                <Route path="/success">
+                  <Success />
+                </Route>
+              </Switch>
+            </Router>
+          </BasketProvider>
+        </ProductProvider>
       </StylesProvider>
     </>
   )

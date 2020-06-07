@@ -2,6 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { useProductContext } from '../store/productContext'
+import { useBasket } from '../store/basketContext'
+import { getNumItems, getTotalPrice } from '../store/selectors'
+
 import Layout from '../components/Layout'
 import Title from '../components/Title'
 import Product from '../components/Product'
@@ -37,9 +40,13 @@ const List = styled.div`
 `
 
 const ProductList = () => {
-  const { products, loading } = useProductContext()
+  const [basket, basketDispatch] = useBasket()
+  const { products, productsMap, loading } = useProductContext()
 
   if (loading) return <Loading />
+
+  const totalPrice = getTotalPrice(basket, productsMap)
+  const items = getNumItems(basket)
 
   return (
     <Layout>
@@ -61,7 +68,7 @@ const ProductList = () => {
           </List>
         </LeftColumn>
         <RightColumn>
-          <Basket />
+          <Basket total={totalPrice} items={items} />
         </RightColumn>
       </Container>
     </Layout>

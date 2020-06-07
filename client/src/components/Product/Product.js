@@ -3,7 +3,8 @@ import styled from 'styled-components'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 
-import { useBasket, isProductRemovable } from '../../store/basketContext'
+import { useBasket } from '../../store/basketContext'
+import { isProductRemovable } from '../../store/selectors'
 
 const Container = styled.div`
   display: flex;
