@@ -8,12 +8,14 @@ const TestConsumer = () => {
   const addToBasket = () => dispatch({ type: 'add', payload: { id: 1 } })
   const removeFromBasket = () =>
     dispatch({ type: 'remove', payload: { id: 1 } })
+  const clearBasket = () => dispatch({ type: 'clear' })
 
   return (
     <>
       <div data-testid="state">{JSON.stringify(state)}</div>
       <button data-testid="addToBasket" onClick={addToBasket} />
       <button data-testid="removeFromBasket" onClick={removeFromBasket} />
+      <button data-testid="clearBasket" onClick={clearBasket} />
     </>
   )
 }
@@ -67,5 +69,18 @@ describe('basketContext', () => {
     fireEvent.click(screen.getByTestId('removeFromBasket'))
 
     expect(getRenderedValue(screen.getByTestId('state'))).toEqual({ 1: 0 })
+  })
+
+  it('clears basket', () => {
+    render(
+      <BasketProvider>
+        <TestConsumer />
+      </BasketProvider>
+    )
+
+    fireEvent.click(screen.getByTestId('addToBasket'))
+    fireEvent.click(screen.getByTestId('clearBasket'))
+
+    expect(getRenderedValue(screen.getByTestId('state'))).toEqual({})
   })
 })

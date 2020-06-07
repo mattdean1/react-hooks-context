@@ -1,1 +1,1 @@
-export const formatPrice = float => float.toFixed(2)
+export const formatPrice = (float) => float.toFixed(2)

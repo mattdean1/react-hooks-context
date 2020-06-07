@@ -1,11 +1,7 @@
 ## Matt Dean tech test
 
-... short desc
-
-### Highlights
-
-- State storage using context
+- State storage using context (check out the `store` folder)
 - Hooks
-- Storybook (with viewport addon)
+- Storybook (`yarn storybook`)
 - Linting with eslint/prettier
-- Unit testing with react-testing library
+- Unit testing with react-testing library (`yarn test`)

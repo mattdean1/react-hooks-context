@@ -29,6 +29,6 @@ module.exports = {
     "import/extensions": 0,
     "import/prefer-default-export": 0,
     "react/jsx-wrap-multilines": ["error", {"declaration": false, "assignment": false}],
-    "no-restricted-syntax": 0
+    "no-restricted-syntax": 0,
   },
 }
