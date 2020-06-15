@@ -27,10 +27,11 @@ yarn dev
 
 ![Product list](/screenshots/product-list.png)
 
-
+-----
 
 ![Checkout](/screenshots/checkout.png)
 
 
+-----
 
 ![Success](/screenshots/success.png)
