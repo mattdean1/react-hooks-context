@@ -24,3 +24,13 @@ yarn dev
 ```
 
 ## Screenshots
+
+![Product list](/screenshots/product-list.png)
+
+-
+
+![Checkout](/screenshots/checkout.png)
+
+-
+
+![Success](/screenshots/success.png)
