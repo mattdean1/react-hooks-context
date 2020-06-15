@@ -14,6 +14,7 @@ Small node server returns a list of products and exposes a checkout endpoint. Sw
 - Linting with eslint/prettier
 - Unit testing with react-testing library (`yarn test`)
 - Routing using `react-router`
+- styled-components
 
 ## How to run
 
